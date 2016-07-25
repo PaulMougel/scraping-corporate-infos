@@ -6,6 +6,7 @@ Scraping corporate infos with Python 2.7
 - Python 2.7
 - Requests `pip install requests`
 - Lxml `pip install lxml`
+- Web.py `pip install web.py`
 
 # Run
 
