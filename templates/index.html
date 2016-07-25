@@ -1,0 +1,76 @@
+$def with (greeting)
+<form class="w3-container w3-animate-opacity" action="/" method="POST">
+    <input class="w3-input" type="text" name="search" placeholder="Search a company...">
+    <input class="w3-btn-block w3-teal" type="submit">
+</form>
+$if greeting:
+    <div class="w3-row-padding w3-margin-top">
+
+        <div class="w3-third">
+            <div class="w3-card-2 w3-white w3-animate-opacity">
+                <img src="$greeting['logo']" class="w3-hover-opacity w3-black" style="width:100%" alt="logo">
+                <div class="w3-container">
+                    <h4><b>$greeting['company_name']</b></h4>
+                    <p><b>Industry</b><br>
+                        $greeting['industry']</p>
+                    <p><b>Type</b><br>
+                        $greeting['type']</p>
+                    <p><b>Company Size</b><br>
+                        $greeting['size']</p>
+                    <p><b>Localisation</b><br>
+                        $greeting['street'] $greeting['zip']<br>
+                        $greeting['city'], $greeting['country']</p>
+                    <p><b>Website</b><br>
+                        <a href="$greeting['website']">$greeting['website']</a></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="w3-twothird">
+            <div class="w3-card-2 w3-animate-opacity">
+                <header class="w3-container w3-blue">
+                    <h1>Description</h1>
+                </header>
+
+                <div class="w3-container w3-white">
+                    <p><pre>$greeting['description']</pre></p>
+                    <p><b>Specialities</b><br>
+                    <ul class="w3-ul w3-hoverable">
+                        $for s in greeting['specialities']:
+                              <li>$s</li>
+                    </ul>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-twothird w3-section ">
+            <div class="w3-card-2  w3-animate-opacity">
+                <header class="w3-container w3-blue">
+                    <h1>Profiles</h1>
+                </header>
+                    <ul class="w3-ul w3-card-4 w3-white">
+                        <li class="w3-padding-16">
+                            <img src="https://www.mautic.org/media/images/default_avatar.png" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                            <span class="w3-xlarge">Mike</span><br>
+                            <span>Web Designer</span>
+                        </li>
+                        <li class="w3-padding-16">
+                            <img src="https://www.mautic.org/media/images/default_avatar.png" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                            <span class="w3-xlarge">Jill</span><br>
+                            <span>Support</span>
+                        </li>
+                        <li class="w3-padding-16">
+                            <img src="https://www.mautic.org/media/images/default_avatar.png" class="w3-left w3-circle w3-margin-right" style="width:60px">
+                            <span class="w3-xlarge">Jane</span><br>
+                            <span>Accountant</span>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+    </div>
+$else:
+    <div class="w3-container w3-red w3-animate-zoom" style="margin:0.01em 16px;">
+        <h3>Fail!</h3>
+        <p>Can't find any company with this name.</p>
+    </div> 
